@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ismael Brea — Ingeniería Informática / Systems &amp; Security</title>
+<meta name="description" content="Portfolio de Ismael, estudiante de Ingeniería Informática. Proyectos, writeups y perfiles de Hack The Box y TryHackMe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="scanline" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="#top" class="nav__logo">ismael brea<span class="cursor-blink">_</span></a>
+  <nav class="nav__links">
+    <a href="#about">sobre-mi</a>
+    <a href="#projects">proyectos</a>
+    <a href="#ctf">ctf</a>
+    <a href="#certifications">certificaciones</a>
+    <a href="#notes">apuntes</a>
+    <a href="#terminal">terminal</a>
+    <a href="#contact">contacto</a>
+  </nav>
+  <button class="nav__menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow">~/portfolio $ <span id="whoamiType"></span><span class="cursor-blink">_</span></p>
+      <h1 class="hero__name">Ismael Brea</h1>
+      <p class="hero__role">Estudiante de Ingeniería Informática — <span class="accent2">Sistemas &amp; Seguridad</span></p>
+      <p class="hero__bio">
+        Estudiante de Ingeniería Informática. Pentester &amp; Security Analyst Junior. Me muevo entre
+        administración de sistemas y cloud computing, con un poco de desarrollo full-stack y seguridad
+        ofensiva en mis ratos libres. En crecimiento constante, me gusta aprender y compartir lo que sé.
+        Este portfolio es un reflejo de mis proyectos, writeups y perfiles en plataformas de CTF.
+      </p>
+      <div class="hero__links">
+        <a class="btn btn--primary" href="https://github.com/IsmaelBrea" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://tryhackme.com/p/IsmaBrea" target="_blank" rel="noopener">TryHackMe</a>
+        <a class="btn" href="https://www.linkedin.com/in/ismael-brea-arias-a05761312" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://app.hackthebox.com/users/2231279" target="_blank" rel="noopener">Hack The Box</a>
+      </div>
+    </div>
+    <div class="hero__photo-wrap">
+      <div class="hero__photo-frame">
+        <img src="assets/profile.jpg" alt="Foto de Ismael" class="hero__photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="hero__photo-fallback">
+          <span>[ colocar aquí<br>assets/profile.jpg ]</span>
+        </div>
+      </div>
+      <div class="hero__photo-tag">status: <span class="status-dot"></span><span class="accent2">online</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint">scroll ↓</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <p class="section__eyebrow">02 — sobre mí</p>
+  <div class="window reveal">
+    <div class="window__bar">
+      <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+      <span class="window__title">about.txt — cat</span>
+    </div>
+    <div class="window__body window__body--mono">
+<pre><span class="prompt">$</span> cat about.txt
+
+<span class="accent">nombre</span>      Ismael Brea
+<span class="accent">estudios</span>    Ingeniería Informática · UDC
+<span class="accent">perfil</span>      Pentester &amp; Security Analyst Junior
+<span class="accent">enfoque</span>     Sistemas · Redes · Ciberseguridad · Desarrollo web · Cloud
+
+<span class="accent">stack</span>
+  ├─ administración   Linux, FreeBSD, Solaris, OpenBSD, NetBSD, Ansible
+  ├─ infraestructura  Vagrant, Packer, Kubernetes, Docker
+  ├─ desarrollo       Java, Spring, Python, Django, React, Bash
+  ├─ datos            Pandas, SQL, Talend, LaTeX
+  └─ seguridad        Criptografía, forense digital, SIEM, análisis de red
+
+<span class="accent">actualmente</span> aprendiendo pentesting y ciberseguridad defensiva,
+             ampliando conocimientos y enfrentándome a nuevos retos cada semana.
+</pre>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <p class="section__eyebrow">03 — proyectos</p>
+  <h2 class="section__title">Proyectos</h2>
+
+  <div class="projects-grid">
+
+    <article class="window project-card reveal">
+      <div class="window__bar">
+        <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+        <span class="window__title">irm-tracker</span>
+      </div>
+      <div class="window__body">
+        <h3 class="project-card__title">IRM Tracker</h3>
+        <p class="project-card__desc">
+          Aplicación web de analítica de fútbol hecha con Django. Comparativas
+          head-to-head, gráficas interactivas con Plotly.js, banderas de
+          nacionalidad por jugador y navegación entre rendimientos por equipo.
+        </p>
+        <ul class="project-card__tags">
+          <li>Django</li><li>Python</li><li>Plotly.js</li><li>Tailwind</li>
+        </ul>
+        <div class="project-card__links">
+          <a href="https://github.com/IsmaelBrea/irm2526" target="_blank" rel="noopener">repo →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="window project-card reveal">
+      <div class="window__bar">
+        <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+        <span class="window__title">shell-c</span>
+      </div>
+      <div class="window__body">
+        <h3 class="project-card__title">Shell de Linux en C</h3>
+        <p class="project-card__desc">
+          Shell de Unix implementada en C desde cero. Uno de mis primeros
+          proyectos grandes de la carrera: programación en C y fundamentos
+          y comandos básicos de Linux.
+        </p>
+        <ul class="project-card__tags">
+          <li>C</li><li>Linux</li><li>Sistemas Operativos</li>
+        </ul>
+        <div class="project-card__links">
+          <a href="https://github.com/IsmaelBrea/Sistemas_operativos" target="_blank" rel="noopener">repo →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="window project-card project-card--empty reveal">
+      <div class="window__bar">
+        <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+        <span class="window__title">proyecto-03</span>
+      </div>
+      <div class="window__body">
+        <pre class="empty-pre">$ ls proyecto-03/
+ls: no se han encontrado archivos
+
+// TODO: añadir el siguiente proyecto</pre>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- CTF / HTB-THM -->
+<section class="section" id="ctf">
+  <p class="section__eyebrow">04 — ctf &amp; writeups</p>
+  <div class="ctf-strip">
+    <a class="ctf-card reveal" href="https://tryhackme.com/p/IsmaBrea" target="_blank" rel="noopener">
+      <span class="ctf-card__platform">TryHackMe</span>
+      <span class="ctf-card__stat">perfil →</span>
+    </a>
+    <a class="ctf-card reveal" href="https://github.com/IsmaelBrea" target="_blank" rel="noopener">
+      <span class="ctf-card__platform">Writeups</span>
+      <span class="ctf-card__stat">en GitHub →</span>
+    </a>
+    <a class="ctf-card reveal" href="https://app.hackthebox.com/users/2231279" target="_blank" rel="noopener">
+      <span class="ctf-card__platform">Hack The Box</span>
+      <span class="ctf-card__stat">perfil →</span>
+    </a>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section" id="certifications">
+  <p class="section__eyebrow">05 — certificaciones</p>
+  <h2 class="section__title">Certificaciones</h2>
+
+  <div class="projects-grid">
+
+    <article class="window project-card reveal">
+      <div class="window__bar">
+        <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+        <span class="window__title">ejpt</span>
+      </div>
+      <div class="window__body">
+        <h3 class="project-card__title">eJPT — Junior Penetration Tester</h3>
+        <p class="project-card__desc">
+          Certificación práctica de pentesting de INE/eLearnSecurity.
+          Actualmente en curso — apuntes en construcción.
+        </p>
+        <ul class="project-card__tags">
+          <li>en curso</li>
+        </ul>
+        <div class="project-card__links">
+          <a href="https://lunar-chokeberry-993.notion.site/EJPT-37bb8af95991809db957dffb79260e3f" target="_blank" rel="noopener">apuntes →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="window project-card reveal">
+      <div class="window__bar">
+        <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+        <span class="window__title">ccst</span>
+      </div>
+      <div class="window__body">
+        <h3 class="project-card__title">Cisco Certified Support Technician (CCST)</h3>
+        <p class="project-card__desc">Cisco Networking Academy — fundamentos de redes y soporte técnico.</p>
+        <ul class="cert-card__meta">
+          <li><span class="label">expedición</span> abr. 2026</li>
+          <li><span class="label">vencimiento</span> abr. 2031</li>
+          <li><span class="label">credencial</span> b086de22-f403-4321-8097-408bbd2071b9</li>
+        </ul>
+        <div class="project-card__links">
+          <a href="https://www.credly.com/earner/earned/badge/b086de22-f403-4321-8097-408bbd2071b9" target="_blank" rel="noopener">ver credencial →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="window project-card reveal">
+      <div class="window__bar">
+        <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+        <span class="window__title">jr-cybersec-analyst</span>
+      </div>
+      <div class="window__body">
+        <h3 class="project-card__title">Junior Cybersecurity Analyst Career Path</h3>
+        <p class="project-card__desc">Cisco Networking Academy.</p>
+        <ul class="project-card__tags">
+          <li>Seguridad Cloud</li><li>Firewalls</li><li>+3 aptitudes más</li>
+        </ul>
+        <ul class="cert-card__meta">
+          <li><span class="label">expedición</span> mar. 2026</li>
+          <li><span class="label">vencimiento</span> mar. 2026</li>
+          <li><span class="label">credencial</span> f850fbcb-c2c8-4c24-b080-a2c6a1024164</li>
+        </ul>
+        <div class="project-card__links">
+          <a href="https://www.credly.com/earner/earned/badge/f850fbcb-c2c8-4c24-b080-a2c6a1024164" target="_blank" rel="noopener">ver credencial →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="window project-card reveal">
+      <div class="window__bar">
+        <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+        <span class="window__title">network-technician</span>
+      </div>
+      <div class="window__body">
+        <h3 class="project-card__title">Network Technician Career Path</h3>
+        <p class="project-card__desc">Cisco Networking Academy.</p>
+        <ul class="cert-card__meta">
+          <li><span class="label">expedición</span> mar. 2026</li>
+          <li><span class="label">vencimiento</span> mar. 2026</li>
+          <li><span class="label">credencial</span> cc5acfac-0923-4652-83f6-775e0338df</li>
+        </ul>
+        <div class="project-card__links">
+          <a href="https://www.credly.com/earner/earned/badge/cc5acfac-0923-4652-83f6-775e0338df" target="_blank" rel="noopener">ver credencial →</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- NOTES -->
+<section class="section" id="notes">
+  <p class="section__eyebrow">06 — apuntes</p>
+  <h2 class="section__title">Apuntes</h2>
+  <p class="section__subtitle">Notas de estudio organizadas por bloques, alojadas en Notion. Se amplían según voy avanzando.</p>
+
+  <div class="window reveal">
+    <div class="window__bar">
+      <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+      <span class="window__title">~/apuntes — tree</span>
+    </div>
+    <div class="window__body">
+      <div class="notes-tree" id="notesTree">
+        <!-- generado automáticamente por js/script.js a partir del array NOTES -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERMINAL -->
+<section class="section" id="terminal">
+  <p class="section__eyebrow">07 — terminal</p>
+  <h2 class="section__title">Navega escribiendo comandos</h2>
+  <p class="section__subtitle">Escribe <code>help</code> para ver qué puedes hacer. Prueba <code>cd proyectos</code> y luego <code>cat irm-tracker.txt</code>.</p>
+
+  <div class="window terminal-window reveal" id="terminalWindow">
+    <div class="window__bar">
+      <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+      <span class="window__title">ismael@portfolio: ~</span>
+    </div>
+    <div class="terminal__body" id="terminalBody" tabindex="0">
+      <div class="terminal__output" id="terminalOutput"></div>
+      <div class="terminal__input-line">
+        <span class="prompt">ismael@portfolio</span><span class="prompt-sep" id="promptSep">:~$</span>
+        <input type="text" id="terminalInput" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Comando de terminal">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <p class="section__eyebrow">08 — contacto</p>
+  <p class="footer__line">¿Hablamos? <a href="mailto:ismabrearias@gmail.com">ismabrearias@gmail.com</a></p>
+  <div class="footer__socials">
+    <a href="https://github.com/IsmaelBrea" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://tryhackme.com/p/IsmaBrea" target="_blank" rel="noopener">TryHackMe</a>
+    <a href="https://www.linkedin.com/in/ismael-brea-arias-a05761312" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://app.hackthebox.com/users/2231279" target="_blank" rel="noopener">Hack The Box</a>
+  </div>
+  <p class="footer__copy">$ echo "gracias por pasarte" — Ismael, <span id="year"></span></p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
