@@ -1,110 +1,108 @@
-# Portfolio de Ismael
+# Portfolio — Ismael Brea
 
-Sitio estático (HTML/CSS/JS puro, sin frameworks ni build) con estética
-terminal/hacker y una terminal interactiva real en la parte inferior.
+Portfolio personal de **Ismael Brea**, estudiante de Ingeniería Informática especializado en **ciberseguridad, redes y sistemas**.
 
-```
+Web estática desarrollada con **HTML, CSS y JavaScript**, con una estética inspirada en terminales Linux y una terminal interactiva integrada.
+
+## Tecnologías
+
+* HTML5
+* CSS3
+* JavaScript
+* Linux / Kali Linux
+* Git & GitHub
+
+## Estructura
+
+```text
 portfolio/
 ├── index.html
-├── css/style.css
-├── js/script.js
-├── assets/         ← aquí va tu foto (profile.jpg)
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+├── assets/
+│   └── profile.jpg
 └── README.md
 ```
 
-## 1. Personalizar (lo primero que hay que tocar)
+## Contenido
 
-### Enlaces y datos
-Todo lo editable está centralizado en **dos sitios**:
+El portfolio incluye:
 
-1. `index.html` — busca `TU_USUARIO`, `TU_ID` y `tucorreo@ejemplo.com` (Ctrl+F / Cmd+F)
-   y sustitúyelos por tus enlaces reales de GitHub, Hack The Box, TryHackMe,
-   LinkedIn y tu email.
-2. `js/script.js` — al principio del archivo hay un objeto `LINKS` y una lista
-   `PROJECTS`. Son los mismos datos, pero los usa la terminal interactiva.
-   Actualízalos también ahí.
+* Presentación personal
+* Formación académica
+* Certificaciones de ciberseguridad
+* Conocimientos técnicos
+* Proyectos
+* Experiencia práctica en laboratorios de ciberseguridad
+* Perfiles de GitHub, LinkedIn, Hack The Box y TryHackMe
+* Terminal interactiva con comandos personalizados
 
-### Foto
-Coloca tu foto en `assets/profile.jpg` (ese nombre exacto, o cambia la ruta
-en `index.html` → `<img src="assets/profile.jpg">`). Si no hay foto, se
-muestra automáticamente un placeholder.
+## Terminal interactiva
 
-### Proyectos
-Cada proyecto es una `<article class="window project-card">` dentro de
-`<section id="projects">` en `index.html`. Hay dos tarjetas vacías
-(`proyecto-02`, `proyecto-03`) listas para rellenar copiando el bloque de
-`irm-tracker` y cambiando el texto. Recuerda añadir también el proyecto al
-array `PROJECTS` en `js/script.js` si quieres que se pueda abrir con el
-comando `open <proyecto>` de la terminal.
+La web incluye una terminal funcional desde la que se pueden consultar diferentes secciones del portfolio.
 
-## 2. Ver el resultado en local
+Los comandos y la información utilizada por la terminal se encuentran en:
 
-No hace falta instalar nada. Basta con abrir `index.html` en el navegador,
-o si prefieres servirlo (recomendado, evita problemas con rutas):
+```text
+js/script.js
+```
+
+Ahí se pueden modificar los enlaces, proyectos y comandos disponibles.
+
+## Ejecutar en local
+
+No requiere instalación de frameworks ni dependencias.
+
+Puedes abrir directamente `index.html` en el navegador.
+
+También puedes utilizar un servidor HTTP local:
 
 ```bash
 cd portfolio
 python3 -m http.server 8000
-# abre http://localhost:8000
 ```
 
-## 3. Desplegarlo de verdad (gratis)
+Después abre:
 
-La forma más simple para una web estática como esta es **GitHub Pages** o
-**Vercel**. Con cualquiera de las dos puedes luego enganchar un dominio propio.
+```text
+http://localhost:8000
+```
 
-### Opción A — GitHub Pages (sencillo, y ya usas GitHub para tus proyectos)
+## Actualizar el portfolio
 
-1. Crea un repo nuevo en GitHub, por ejemplo `ismael.github.io` (si usas
-   exactamente `TU_USUARIO.github.io` como nombre, la web queda directamente
-   en esa URL sin configuración extra) o cualquier otro nombre, ej. `portfolio`.
-2. Sube estos archivos:
-   ```bash
-   git init
-   git add .
-   git commit -m "primer commit del portfolio"
-   git branch -M main
-   git remote add origin https://github.com/TU_USUARIO/TU_REPO.git
-   git push -u origin main
-   ```
-3. En GitHub → **Settings → Pages** → en "Source" elige la rama `main` y
-   carpeta `/ (root)`. Guarda.
-4. En 1-2 minutos tu web estará en `https://TU_USUARIO.github.io/TU_REPO/`
-   (o en `https://TU_USUARIO.github.io/` si usaste el nombre especial).
+Para modificar el contenido:
 
-### Opción B — Vercel (deploy con un comando, buena si luego quieres añadir más cosas)
+1. Edita `index.html`, `css/style.css` o `js/script.js`.
+2. Comprueba los cambios en local.
+3. Guarda los cambios en Git:
 
-1. Crea cuenta en [vercel.com](https://vercel.com) con tu GitHub.
-2. "Add New Project" → importa el repo que subiste a GitHub.
-3. Como es HTML estático, no hace falta configurar nada (framework:
-   "Other"). Deploy.
-4. Te da una URL tipo `tuportfolio.vercel.app` al momento.
+```bash
+git add .
+git commit -m "Actualización del portfolio"
+git push
+```
 
-## 4. Comprar y conectar un dominio real
+El repositorio está conectado a **Vercel**, por lo que los nuevos cambios se despliegan automáticamente después de hacer `git push`.
 
-1. **Compra el dominio** en un registrador. Opciones normales de precio y
-   sin sorpresas: [Porkbun](https://porkbun.com), [Namecheap](https://namecheap.com)
-   o [Cloudflare Registrar](https://www.cloudflare.com/products/registrar/)
-   (este último vende al precio de coste, sin margen). Un `.dev` o `.com`
-   suele rondar 8-15 €/año; hay `.tech` o `.me` que a veces salen más
-   baratos el primer año.
-2. **Conéctalo a tu hosting:**
-   - *Con GitHub Pages:* en el repo, Settings → Pages → "Custom domain",
-     escribe tu dominio. GitHub te dirá qué registros DNS (`A` o `CNAME`)
-     añadir en el panel de tu registrador. Se tarda unos minutos/horas en
-     propagar.
-   - *Con Vercel:* en el proyecto → Settings → Domains → añade tu dominio.
-     Vercel te da los registros DNS exactos a configurar en tu registrador.
-3. Activa HTTPS: ambas plataformas lo hacen automáticamente y de forma
-   gratuita en cuanto el DNS propaga (certificado Let's Encrypt).
+## Despliegue
 
-## 5. Ideas para seguir completando
+El portfolio está alojado mediante **Vercel** y conectado directamente con este repositorio de GitHub.
 
-- Rellenar `proyecto-02` y `proyecto-03` con proyectos reales o writeups.
-- Añadir estadísticas reales de HTB/THM (rango, máquinas resueltas) en la
-  sección `#ctf` cuando las tengas a mano.
-- Añadir más comandos a la terminal (`js/script.js` → objeto `COMMANDS`),
-  por ejemplo `cv` para descargar tu currículum en PDF.
-- Analítica de visitas: si quieres saber cuánta gente visita la web sin
-  usar cookies/tracking invasivo, [Plausible](https://plausible.io) o
-  [GoatCounter](https://www.goatcounter.com) son opciones ligeras.
+Cada cambio enviado a la rama `main` genera automáticamente un nuevo despliegue.
+
+## Próximas mejoras
+
+* Añadir nuevos proyectos y writeups de ciberseguridad.
+* Incorporar más laboratorios y CTF completados.
+* Añadir un CV descargable.
+* Mejorar la terminal interactiva.
+* Incorporar estadísticas de Hack The Box y TryHackMe.
+* Conectar un dominio personalizado.
+
+---
+
+**Ismael Brea**
+Computer Engineering · Cybersecurity · Networks
+
