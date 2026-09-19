@@ -2,11 +2,13 @@
 // CONFIG — tus enlaces y proyectos reales
 // ============================================================
 const LINKS = {
-  github:   "https://github.com/IsmaelBrea",
-  htb:      "https://app.hackthebox.com/users/2231279",
-  thm:      "https://tryhackme.com/p/IsmaBrea",
-  linkedin: "https://www.linkedin.com/in/ismael-brea-arias-a05761312",
-  email:    "ismabrearias@gmail.com",
+  github:      "https://github.com/IsmaelBrea",
+  htb:         "https://app.hackthebox.com/users/2231279",
+  thm:         "https://tryhackme.com/p/IsmaBrea",
+  dockerlabs:  "https://dockerlabs.es/u/ismaelbrea",
+  writeups:    "https://github.com/IsmaelBrea/DockerLabs",
+  linkedin:    "https://www.linkedin.com/in/ismael-brea-arias-a05761312",
+  email:       "ismabrearias@gmail.com",
 };
 
 const PROJECTS = [
@@ -24,14 +26,16 @@ const PROJECTS = [
   },
 ];
 
-// certificaciones: añade más aquí cuando las tengas ({name, issuer, date, url, status, credentialId})
+// certificaciones: añade más aquí cuando las tengas ({name, issuer, date, url, status, credentialId, notesUrl})
 const CERTIFICATIONS = [
   {
-    name: "eJPT — Junior Penetration Tester",
+    name: "eJPT v2 — Junior Penetration Tester",
     issuer: "INE / eLearnSecurity",
-    date: "en curso",
-    status: "en curso",
-    url: "https://lunar-chokeberry-993.notion.site/EJPT-37bb8af95991809db957dffb79260e3f",
+    date: "",
+    status: "completada",
+    credentialId: "194537502",
+    url: "https://certs.ine.com/ec900b07-b741-42c3-8a32-7946692b955f",
+    notesUrl: "https://lunar-chokeberry-993.notion.site/EJPT-37bb8af95991809db957dffb79260e3f",
   },
   {
     name: "Cisco Certified Support Technician (CCST)",
@@ -247,9 +251,11 @@ ampliando conocimientos y enfrentándome a nuevos retos cada semana.`
 
   "/proyectos": { type: "dir", children: PROJECTS.map(p => p.id + ".txt") },
 
-  "/ctf": { type: "dir", children: ["hackthebox.txt", "tryhackme.txt"] },
-  "/ctf/hackthebox.txt": { type: "file", content: `Hack The Box\nperfil: ${LINKS.htb}` },
-  "/ctf/tryhackme.txt":  { type: "file", content: `TryHackMe\nperfil: ${LINKS.thm}` },
+  "/ctf": { type: "dir", children: ["hackthebox.txt", "tryhackme.txt", "dockerlabs.txt", "writeups.txt"] },
+  "/ctf/hackthebox.txt": { type: "file", content: `Hack The Box\nperfil: ${LINKS.htb}`, url: LINKS.htb },
+  "/ctf/tryhackme.txt":  { type: "file", content: `TryHackMe\nperfil: ${LINKS.thm}`, url: LINKS.thm },
+  "/ctf/dockerlabs.txt": { type: "file", content: `DockerLabs\nperfil: ${LINKS.dockerlabs}`, url: LINKS.dockerlabs },
+  "/ctf/writeups.txt":   { type: "file", content: `Writeups (DockerLabs)\nrepo: ${LINKS.writeups}`, url: LINKS.writeups },
 
   "/certificaciones": {
     type: "dir",
@@ -277,12 +283,13 @@ CERTIFICATIONS.forEach((c, i) => {
   const lines = [
     c.name,
     `emisor: ${c.issuer}`,
-    `fecha: ${c.date}`,
-    `estado: ${c.status || "completada"}`,
   ];
+  if (c.date) lines.push(`fecha: ${c.date}`);
+  lines.push(`estado: ${c.status || "completada"}`);
   if (c.credentialId) lines.push(`ID credencial: ${c.credentialId}`);
-  if (c.url) lines.push(`enlace: ${c.url}`);
-  FS["/certificaciones/cert-" + (i + 1) + ".txt"] = { type: "file", content: lines.join("\n") };
+  if (c.url) lines.push(`credencial: ${c.url}`);
+  if (c.notesUrl) lines.push(`apuntes: ${c.notesUrl}`);
+  FS["/certificaciones/cert-" + (i + 1) + ".txt"] = { type: "file", content: lines.join("\n"), url: c.url };
 });
 
 // /apuntes se genera solo a partir de NOTES: categoría → bloque → enlace
@@ -361,6 +368,7 @@ const COMMANDS = {
   <span class="out-accent2">github</span>             abre mi GitHub
   <span class="out-accent2">htb</span>                abre mi perfil de Hack The Box
   <span class="out-accent2">thm</span>                abre mi perfil de TryHackMe
+  <span class="out-accent2">dockerlabs</span>         abre mi perfil de DockerLabs
   <span class="out-accent2">contact</span>            info de contacto
   <span class="out-accent2">banner</span>             ascii art
   <span class="out-accent2">clear</span>              limpia la terminal
@@ -424,6 +432,7 @@ completo, o escribe "cat about.txt".`
   github() { printLine("abriendo GitHub…", "out-accent2"); window.open(LINKS.github, "_blank", "noopener"); },
   htb() { printLine("abriendo Hack The Box…", "out-accent2"); window.open(LINKS.htb, "_blank", "noopener"); },
   thm() { printLine("abriendo TryHackMe…", "out-accent2"); window.open(LINKS.thm, "_blank", "noopener"); },
+  dockerlabs() { printLine("abriendo DockerLabs…", "out-accent2"); window.open(LINKS.dockerlabs, "_blank", "noopener"); },
   linkedin() { printLine("abriendo LinkedIn…", "out-accent2"); window.open(LINKS.linkedin, "_blank", "noopener"); },
   contact() {
     printLine(`email: <span class="out-accent">${LINKS.email}</span>`);

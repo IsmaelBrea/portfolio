@@ -339,6 +339,9 @@ code {
   border: 1px solid var(--border); color: var(--accent2);
   padding: 3px 8px; border-radius: 20px;
 }
+.project-card__links {
+  display: flex; flex-wrap: wrap; gap: 16px;
+}
 .project-card__links a {
   font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent);
   border-bottom: 1px solid transparent;
@@ -352,13 +355,6 @@ code {
 }
 .cert-card__meta .label { color: var(--text-faint); margin-right: 6px; }
 
-.project-card--empty .window__body { display: flex; align-items: center; }
-.empty-pre {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--text-faint);
-  line-height: 1.8;
-}
 
 /* =========================================================
    CTF STRIP
@@ -472,7 +468,8 @@ code {
 .ctf-strip > .reveal:nth-child(2) { transition-delay: 90ms; }
 .projects-grid > .reveal:nth-child(3),
 .ctf-strip > .reveal:nth-child(3) { transition-delay: 180ms; }
-.projects-grid > .reveal:nth-child(4) { transition-delay: 270ms; }
+.projects-grid > .reveal:nth-child(4),
+.ctf-strip > .reveal:nth-child(4) { transition-delay: 270ms; }
 
 /* =========================================================
    FOOTER
