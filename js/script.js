@@ -67,40 +67,105 @@ const CERTIFICATIONS = [
 // Para añadir uno nuevo, solo hay que tocar este array — el árbol de la
 // web y la terminal (cd/ls/cat) se generan solos a partir de él.
 const NOTES = [
+
   {
     category: "Ciberseguridad",
+
     sections: [
+
       {
         title: "1 — Hacking & Pentesting",
+
         links: [
-          { name: "EJPT", url: "https://app.notion.com/p/EJPT-37bb8af95991809db957dffb79260e3f?pvs=21" },
-          { name: "Burp Suite", url: "https://app.notion.com/p/Burp-Suite-3bfb8af9599180b993dafa89d46f72a5?pvs=21" },
-          { name: "Active Directory", url: "https://app.notion.com/p/Active-Directory-3c5b8af959918089858ced3923134a6f?pvs=21" },
-          { name: "Auditoría Smishing", url: "https://app.notion.com/p/AUDITOR-A-SMISHING-3bab8af9599180d4a4f9e80c0aaa8f14?pvs=21" },
-          { name: "Hacking Web", url: "https://app.notion.com/p/HACKING-WEB-3c9b8af9599180038b2cd42a48188dc4?pvs=21" },
-          { name: "Hacking WiFi" },
-        ],
+
+          {
+            name: "EJPT",
+            url: "https://app.notion.com/p/EJPT-37bb8af95991809db957dffb79260e3f?pvs=21"
+          },
+
+          {
+            name: "Burp Suite",
+            url: "https://app.notion.com/p/Burp-Suite-3bfb8af9599180b993dafa89d46f72a5?pvs=21",
+
+            sublinks: [
+              {
+                name: "Labs Web Security Academy"
+              },
+              {
+                name: "BSCP"
+              }
+            ]
+          },
+
+          {
+            name: "Active Directory",
+            url: "https://app.notion.com/p/Active-Directory-3c5b8af959918089858ced3923134a6f?pvs=21",
+
+            sublinks: [
+              {
+                name: "AD-RTA"
+              }
+            ]
+          },
+
+          {
+            name: "Auditoría Smishing",
+            url: "https://app.notion.com/p/AUDITOR-A-SMISHING-3bab8af9599180d4a4f9e80c0aaa8f14?pvs=21"
+          },
+
+          {
+            name: "Hacking Web",
+            url: "https://app.notion.com/p/HACKING-WEB-3c9b8af9599180038b2cd42a48188dc4?pvs=21",
+
+            sublinks: [
+              {
+                name: "WEB-RTA"
+              },
+              {
+                name: "API-RTA"
+              }
+            ]
+          },
+
+          {
+            name: "Hacking WiFi"
+          }
+
+        ]
       },
+
       {
         title: "2 — Blue Team & SOC",
+
         links: [
-          { name: "10 proyectos Analista SOC", url: "https://app.notion.com/p/10-proyectos-Analista-SOC-3c7b8af95991800eb5f9de0ffc74a75f?pvs=21" },
-        ],
+          {
+            name: "10 proyectos Analista SOC",
+            url: "https://app.notion.com/p/10-proyectos-Analista-SOC-3c7b8af95991800eb5f9de0ffc74a75f?pvs=21"
+          }
+        ]
       },
+
       {
         title: "3 — Cloud Security",
+
         links: [
-          { name: "Microcredential AWS Incident Response Demonstrated", url: "https://app.notion.com/p/Microcredential-AWS-Incident-Response-Demonstrated-3c5b8af9599180a18df8ecd64b54d8e1?pvs=21" },
-        ],
+          {
+            name: "Microcredential AWS Incident Response Demonstrated",
+            url: "https://app.notion.com/p/Microcredential-AWS-Incident-Response-Demonstrated-3c5b8af9599180a18df8ecd64b54d8e1?pvs=21"
+          }
+        ]
       },
+
       {
         title: "4 — Digital Forensic",
-        links: [
-          // TODO: añadir apuntes de forense digital
-        ],
-      },
-    ],
-  },
+
+        links: []
+
+      }
+
+    ]
+  }
+
 ];
 
 // ============================================================
@@ -169,26 +234,91 @@ if (menuBtn) {
 // ============================================================
 // RENDER de "apuntes" — construye el árbol visual a partir de NOTES
 // ============================================================
+// ============================================================
+// RENDER de "apuntes" — construye el árbol visual a partir de NOTES
+// ============================================================
 (function renderNotesTree() {
   const el = document.getElementById("notesTree");
   if (!el) return;
 
   el.innerHTML = NOTES.map(cat => `
     <div class="notes-category">
-      <span class="notes-category__label">${escapeHtml(cat.category)}</span>
+
+      <span class="notes-category__label">
+        ${escapeHtml(cat.category)}
+      </span>
+
       ${cat.sections.map(sec => `
         <div class="notes-section">
-          <span class="notes-section__title">${escapeHtml(sec.title)}</span>
-          ${sec.links.length
-            ? `<ul class="notes-links">${sec.links.map(l =>
-                l.url
-                  ? `<li><a href="${l.url}" target="_blank" rel="noopener">${escapeHtml(l.name)}</a></li>`
-                  : `<li class="notes-links__pending">${escapeHtml(l.name)} <span class="notes-pending-tag">pendiente</span></li>`
-              ).join("")}</ul>`
-            : `<p class="notes-empty">// próximamente</p>`
+
+          <span class="notes-section__title">
+            ${escapeHtml(sec.title)}
+          </span>
+
+          ${
+            sec.links.length
+              ? `
+                <ul class="notes-links">
+
+                  ${sec.links.map(l => `
+                    <li class="notes-link-item">
+
+                      ${
+                        l.url
+                          ? `
+                            <a href="${l.url}" target="_blank" rel="noopener">
+                              ${escapeHtml(l.name)}
+                            </a>
+                          `
+                          : `
+                            <span class="notes-links__pending">
+                              ${escapeHtml(l.name)}
+                              <span class="notes-pending-tag">pendiente</span>
+                            </span>
+                          `
+                      }
+
+                      ${
+                        l.sublinks && l.sublinks.length
+                          ? `
+                            <ul class="notes-sublinks">
+
+                              ${l.sublinks.map(sub => `
+                                <li class="notes-sublink-item">
+
+                                  ${
+                                    sub.url
+                                      ? `
+                                        <a href="${sub.url}" target="_blank" rel="noopener">
+                                          ${escapeHtml(sub.name)}
+                                        </a>
+                                      `
+                                      : `
+                                        <span class="notes-sublink">
+                                          ${escapeHtml(sub.name)}
+                                        </span>
+                                      `
+                                  }
+
+                                </li>
+                              `).join("")}
+
+                            </ul>
+                          `
+                          : ""
+                      }
+
+                    </li>
+                  `).join("")}
+
+                </ul>
+              `
+              : `<p class="notes-empty">// próximamente</p>`
           }
+
         </div>
       `).join("")}
+
     </div>
   `).join("");
 })();
