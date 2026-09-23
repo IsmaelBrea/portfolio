@@ -123,6 +123,12 @@ const NOTES = [
               },
               {
                 name: "API-RTA"
+              },
+              {
+                name: "OWASP Vulnerable Web Applications Directory (VWAD)"
+              },
+              {
+                name: "YesWeHack Dojo"
               }
             ]
           },
