@@ -355,6 +355,47 @@ code {
 }
 .cert-card__meta .label { color: var(--text-faint); margin-right: 6px; }
 
+/* =========================================================
+   CERT ROADMAP — chapitas "in progress" / "planned"
+   (dentro de una .window, misma estructura que el resto del portfolio)
+   ========================================================= */
+.cert-roadmap-window { margin-top: 20px; }
+
+.cert-roadmap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 28px;
+}
+.cert-roadmap__group h4 {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 14px;
+}
+.cert-chip-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.cert-chip {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px dashed var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.cert-chip--progress { border-color: var(--accent-dim); color: var(--accent); }
+.cert-chip--planned  { border-color: var(--accent2-dim); color: var(--accent2); }
+.cert-roadmap__empty { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); margin: 0; }
+
+.project-card--empty .window__body { display: flex; align-items: center; }
+.empty-pre {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  line-height: 1.8;
+}
 
 /* =========================================================
    CTF STRIP
@@ -409,88 +450,53 @@ code {
 }
 
 /* =========================================================
-   NOTES TREE (apuntes)
+   NOTES TREE (apuntes) — árbol recursivo con ramas plegables
    ========================================================= */
-.notes-tree { font-family: var(--font-mono); font-size: 0.88rem; }
+.notes-tree { font-family: var(--font-mono); font-size: 0.88rem; line-height: 1.55; }
 
-.notes-category { margin-bottom: 28px; }
-.notes-category:last-child { margin-bottom: 0; }
-.notes-category__label {
-  display: block;
+.notes-node summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 3px 0;
+}
+.notes-node summary::-webkit-details-marker { display: none; }
+.notes-node summary::before { content: "▾ "; color: var(--text-faint); }
+.notes-node:not([open]) > summary::before { content: "▸ "; }
+.notes-node summary:hover { color: var(--accent); }
+
+.notes-children {
+  margin-left: 6px;
+  padding-left: 18px;
+  border-left: 1px solid var(--border);
+}
+.notes-node--leaf { padding: 3px 0; }
+.notes-node--leaf::before { content: "· "; color: var(--text-faint); }
+
+/* niveles */
+.notes-node.depth-0 > summary {
   color: var(--accent);
   font-weight: 700;
   letter-spacing: 0.04em;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
-.notes-category__label::before { content: "▸ "; color: var(--accent2); }
+.notes-node.depth-1 { margin-bottom: 12px; }
+.notes-node.depth-1 > summary { color: var(--text); font-weight: 600; }
+.notes-node.depth-1.notes-node--leaf { color: var(--text); font-weight: 600; }
+.notes-node.depth-2 > summary { color: var(--text); }
+.notes-node.depth-3 > summary { color: var(--text-dim); }
 
-.notes-section {
-  margin: 0 0 14px 10px;
-  padding-left: 16px;
-  border-left: 1px solid var(--border);
-}
-.notes-section:last-child { margin-bottom: 0; }
-.notes-section__title {
-  display: block;
-  color: var(--text);
-  margin-bottom: 8px;
-}
-.notes-section__title::before { content: "├─ "; color: var(--text-faint); }
+.notes-tree a { color: var(--accent2); border-bottom: 1px solid transparent; }
+.notes-tree a:hover { border-color: var(--accent2); }
 
-.notes-links { list-style: none; margin: 0; padding: 0 0 0 18px; }
-.notes-links li { margin-bottom: 6px; }
-.notes-links li::before { content: "· "; color: var(--text-faint); }
-.notes-links a { color: var(--accent2); border-bottom: 1px solid transparent; }
-.notes-links a:hover { border-color: var(--accent2); }
-.notes-links__pending { color: var(--text-faint); }
 .notes-pending-tag {
   font-size: 0.68rem;
-  border: 1px solid var(--border);
+  border: 1px dashed var(--border);
   border-radius: 20px;
-  padding: 1px 7px;
-  margin-left: 4px;
+  padding: 1px 8px;
+  margin-left: 6px;
   color: var(--text-faint);
+  white-space: nowrap;
 }
-
-.notes-sublinks {
-  list-style: none;
-  margin: 6px 0 6px 24px;
-  padding-left: 16px;
-  border-left: 1px solid var(--border);
-}
-
-.notes-sublink-item {
-  position: relative;
-  margin: 5px 0;
-}
-
-.notes-sublink-item::before {
-  content: "├─";
-  position: absolute;
-  left: -16px;
-  color: var(--text-dim);
-}
-
-.notes-sublink-item:last-child::before {
-  content: "└─";
-}
-
-.notes-sublink {
-  color: var(--text-dim);
-  font-size: 0.9em;
-}
-
-.notes-sublinks a {
-  color: var(--text-dim);
-  font-size: 0.9em;
-  text-decoration: none;
-}
-
-.notes-sublinks a:hover {
-  color: var(--accent);
-}
-
-.notes-empty { color: var(--text-faint); margin: 0 0 0 18px; }
 
 /* =========================================================
    SCROLL REVEAL — aparición progresiva de bloques al hacer scroll

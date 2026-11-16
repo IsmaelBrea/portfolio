@@ -63,115 +63,132 @@ const CERTIFICATIONS = [
   },
 ];
 
-// apuntes: organizados por categoría → bloques → enlaces.
-// Para añadir uno nuevo, solo hay que tocar este array — el árbol de la
-// web y la terminal (cd/ls/cat) se generan solos a partir de él.
+// apuntes: árbol recursivo. Cada nodo = { name, url?, soon?, children? }
+//   · url      → enlaza a la página original (Notion u otra web)
+//   · soon     → true muestra la marca «Próximamente» (sin página todavía)
+//   · children → subramas (se pueden anidar sin límite)
+// Para añadir o mover algo solo hay que tocar este árbol: la web y la
+// terminal (cd/ls/cat) se generan solas a partir de él.
 const NOTES = [
-
   {
-    category: "Ciberseguridad",
-
-    sections: [
-
+    name: "CIBERSEGURIDAD",
+    children: [
       {
-        title: "1 — Hacking & Pentesting",
-
-        links: [
-
+        name: "1. Hacking & Pentesting",
+        children: [
           {
-            name: "EJPT",
-            url: "https://app.notion.com/p/EJPT-37bb8af95991809db957dffb79260e3f?pvs=21"
+            name: "Certificaciones",
+            children: [
+              { name: "EJPT", url: "https://app.notion.com/p/EJPT-37bb8af95991809db957dffb79260e3f" },
+              { name: "CRTA", soon: true },
+              { name: "eCPPT", soon: true },
+              { name: "OSCP", soon: true },
+            ],
           },
-
-          {
-            name: "Burp Suite",
-            url: "https://app.notion.com/p/Burp-Suite-3bfb8af9599180b993dafa89d46f72a5?pvs=21",
-
-            sublinks: [
-              {
-                name: "Labs Web Security Academy"
-              },
-              {
-                name: "BSCP"
-              }
-            ]
-          },
-
-          {
-            name: "Active Directory",
-            url: "https://app.notion.com/p/Active-Directory-3c5b8af959918089858ced3923134a6f?pvs=21",
-
-            sublinks: [
-              {
-                name: "AD-RTA"
-              }
-            ]
-          },
-
-          {
-            name: "Auditoría Smishing",
-            url: "https://app.notion.com/p/AUDITOR-A-SMISHING-3bab8af9599180d4a4f9e80c0aaa8f14?pvs=21"
-          },
-
           {
             name: "Hacking Web",
-            url: "https://app.notion.com/p/HACKING-WEB-3c9b8af9599180038b2cd42a48188dc4?pvs=21",
-
-            sublinks: [
+            children: [
+              { name: "HACKING WEB", soon: true },
               {
-                name: "WEB-RTA"
+                name: "Burp Suite",
+                url: "https://app.notion.com/p/Burp-Suite-3bfb8af9599180b993dafa89d46f72a5",
+                children: [
+                  { name: "Web Security Academy", url: "https://app.notion.com/p/Web-Security-Academy-3e2b8af95991802c9066fc7055b29150?source=copy_link" },
+                ],
               },
-              {
-                name: "API-RTA"
-              },
-              {
-                name: "OWASP Vulnerable Web Applications Directory (VWAD)"
-              },
-              {
-                name: "YesWeHack Dojo"
-              }
-            ]
+              { name: "Web RTA", soon: true },
+              { name: "API RTA", soon: true },
+              { name: "OWASP Vulnerable Web Applications Directory (VWAD)", soon: true },
+              { name: "YesWeHack Dojo", soon: true },
+            ],
           },
-
           {
-            name: "Hacking WiFi"
-          }
-
-        ]
-      },
-
-      {
-        title: "2 — Blue Team & SOC",
-
-        links: [
+            name: "Active Directory",
+            url: "https://app.notion.com/p/Active-Directory-3c5b8af959918089858ced3923134a6f",
+            children: [
+              { name: "AD-RTS", url: "https://app.notion.com/p/AD-RTS-3e2b8af9599180e39c4afab6b0c09a84" },
+            ],
+          },
           {
-            name: "10 proyectos Analista SOC",
-            url: "https://app.notion.com/p/10-proyectos-Analista-SOC-3c7b8af95991800eb5f9de0ffc74a75f?pvs=21"
-          }
-        ]
-      },
-
-      {
-        title: "3 — Cloud Security",
-
-        links: [
+            name: "Cumplimientos y normativas",
+            children: [
+              { name: "ENS (Esquema Nacional de Seguridad)", soon: true },
+            ],
+          },
           {
-            name: "Microcredential AWS Incident Response Demonstrated",
-            url: "https://app.notion.com/p/Microcredential-AWS-Incident-Response-Demonstrated-3c5b8af9599180a18df8ecd64b54d8e1?pvs=21"
-          }
-        ]
+            name: "Hacking WIFI",
+            children: [
+              { name: "HACKING WIFI", soon: true },
+            ],
+          },
+          {
+            name: "Inteligencia Artificial",
+            children: [
+              { name: "Pipeline de agentes de IA para Bug Bounty", url: "https://app.notion.com/p/Pipeline-de-agentes-de-IA-para-bug-bounty-419b8af959918096825ddcd9ef5baf1e" },
+            ],
+          },
+          {
+            name: "CTFs",
+            children: [
+              { name: "CTF Cibergal 2026", soon: true },
+            ],
+          },
+        ],
       },
-
       {
-        title: "4 — Digital Forensic",
-
-        links: []
-
-      }
-
-    ]
-  }
-
+        name: "2. Blue Team & SOC",
+        children: [
+          { name: "Cybersecurity Home Lab: 10 proyectos Analista SOC", url: "https://app.notion.com/p/Cybersecurity-Home-Lab-10-proyectos-Analista-SOC-3c7b8af95991800eb5f9de0ffc74a75f" },
+          { name: "Auditoría Smishing", soon: true },
+          {
+            name: "Spoofing",
+            children: [
+              { name: "SPOOFING", soon: true },
+              { name: "SPOOFING CORREO", url: "https://app.notion.com/p/SPOOFING-CORREO-3eab8af959918025bea5f99340b37b87" },
+            ],
+          },
+        ],
+      },
+      {
+        name: "3. Cloud Security",
+        children: [
+          { name: "Microcredential AWS Incident Response Demonstrated", soon: true },
+        ],
+      },
+      {
+        name: "4. Digital Forensic",
+        children: [
+          { name: "CCFA", url: "https://app.notion.com/p/CCFA-3c8b8af95991806fb151e728abef58e1" },
+          { name: "04_Informatica_Forense_v4.6.pdf", soon: true },
+          { name: "Autopsy", soon: true },
+        ],
+      },
+      {
+        name: "5. Análisis de datos",
+        children: [
+          { name: "SQL Analítico", url: "https://app.notion.com/p/SQL-Anal-tico-3f5b8af9599180039472cbf3439093c3" },
+        ],
+      },
+      {
+        name: "6. IoT",
+        children: [
+          {
+            name: "6.1 Móviles",
+            children: [
+              { name: "Información seguridad/privacidad móvil", soon: true },
+            ],
+          },
+          {
+            name: "6.2 Cámaras",
+            children: [
+              { name: "argosatlas.com", soon: true },
+            ],
+          },
+        ],
+      },
+      { name: "7. Curiosidades / Proyectos personales", children: [] },
+    ],
+  },
 ];
 
 // ============================================================
@@ -240,93 +257,31 @@ if (menuBtn) {
 // ============================================================
 // RENDER de "apuntes" — construye el árbol visual a partir de NOTES
 // ============================================================
-// ============================================================
-// RENDER de "apuntes" — construye el árbol visual a partir de NOTES
-// ============================================================
 (function renderNotesTree() {
   const el = document.getElementById("notesTree");
   if (!el) return;
 
-  el.innerHTML = NOTES.map(cat => `
-    <div class="notes-category">
+  const label = (node) => {
+    const name = escapeHtml(node.name);
+    const text = node.url
+      ? `<a href="${node.url}" target="_blank" rel="noopener">${name}</a>`
+      : name;
+    return node.soon ? `${text} <span class="notes-pending-tag">Próximamente</span>` : text;
+  };
 
-      <span class="notes-category__label">
-        ${escapeHtml(cat.category)}
-      </span>
+  const nodeHTML = (node, depth) => {
+    const kids = node.children || [];
+    const cls = `notes-node depth-${Math.min(depth, 3)}`;
+    if (kids.length) {
+      return `<details class="${cls} notes-node--group" open>
+        <summary>${label(node)}</summary>
+        <div class="notes-children">${kids.map(k => nodeHTML(k, depth + 1)).join("")}</div>
+      </details>`;
+    }
+    return `<div class="${cls} notes-node--leaf">${label(node)}</div>`;
+  };
 
-      ${cat.sections.map(sec => `
-        <div class="notes-section">
-
-          <span class="notes-section__title">
-            ${escapeHtml(sec.title)}
-          </span>
-
-          ${
-            sec.links.length
-              ? `
-                <ul class="notes-links">
-
-                  ${sec.links.map(l => `
-                    <li class="notes-link-item">
-
-                      ${
-                        l.url
-                          ? `
-                            <a href="${l.url}" target="_blank" rel="noopener">
-                              ${escapeHtml(l.name)}
-                            </a>
-                          `
-                          : `
-                            <span class="notes-links__pending">
-                              ${escapeHtml(l.name)}
-                              <span class="notes-pending-tag">pendiente</span>
-                            </span>
-                          `
-                      }
-
-                      ${
-                        l.sublinks && l.sublinks.length
-                          ? `
-                            <ul class="notes-sublinks">
-
-                              ${l.sublinks.map(sub => `
-                                <li class="notes-sublink-item">
-
-                                  ${
-                                    sub.url
-                                      ? `
-                                        <a href="${sub.url}" target="_blank" rel="noopener">
-                                          ${escapeHtml(sub.name)}
-                                        </a>
-                                      `
-                                      : `
-                                        <span class="notes-sublink">
-                                          ${escapeHtml(sub.name)}
-                                        </span>
-                                      `
-                                  }
-
-                                </li>
-                              `).join("")}
-
-                            </ul>
-                          `
-                          : ""
-                      }
-
-                    </li>
-                  `).join("")}
-
-                </ul>
-              `
-              : `<p class="notes-empty">// próximamente</p>`
-          }
-
-        </div>
-      `).join("")}
-
-    </div>
-  `).join("");
+  el.innerHTML = NOTES.map(n => nodeHTML(n, 0)).join("");
 })();
 
 // ============================================================
@@ -379,6 +334,7 @@ Stack:
   Desarrollo: Java, Spring, Python, Django, React, Bash
   Datos: Pandas, SQL, Talend, LaTeX
   Seguridad: criptografía, forense digital, SIEM, análisis de red
+  Pentesting: Metasploit, Burp Suite, Nmap, Wireshark, Hydra, John the Ripper
 
 Actualmente:
 Aprendiendo pentesting y ciberseguridad defensiva,
@@ -428,24 +384,31 @@ CERTIFICATIONS.forEach((c, i) => {
   FS["/certificaciones/cert-" + (i + 1) + ".txt"] = { type: "file", content: lines.join("\n"), url: c.url };
 });
 
-// /apuntes se genera solo a partir de NOTES: categoría → bloque → enlace
-FS["/apuntes"] = { type: "dir", children: NOTES.map(cat => slugify(cat.category)) };
-NOTES.forEach(cat => {
-  const catPath = "/apuntes/" + slugify(cat.category);
-  FS[catPath] = { type: "dir", children: cat.sections.map(sec => slugify(sec.title)) };
-  cat.sections.forEach(sec => {
-    const secPath = catPath + "/" + slugify(sec.title);
-    FS[secPath] = {
-      type: "dir",
-      children: sec.links.length ? sec.links.map(l => slugify(l.name) + ".txt") : []
-    };
-    sec.links.forEach(link => {
-      FS[secPath + "/" + slugify(link.name) + ".txt"] = link.url
-        ? { type: "file", content: `${link.name}\nenlace: ${link.url}`, url: link.url }
-        : { type: "file", content: `${link.name}\n(apuntes pendientes de subir)` };
-    });
+// /apuntes se genera solo a partir del árbol NOTES (recursivo)
+function buildNotesFS(nodes, parentPath) {
+  const names = [];
+  nodes.forEach(node => {
+    const slug = slugify(node.name);
+    if (Array.isArray(node.children)) {
+      const path = parentPath + "/" + slug;
+      const kidNames = buildNotesFS(node.children, path);
+      if (node.url) {
+        FS[path + "/index.txt"] = { type: "file", content: `${node.name}\nenlace: ${node.url}`, url: node.url };
+        kidNames.unshift("index.txt");
+      }
+      FS[path] = { type: "dir", children: kidNames };
+      names.push(slug);
+    } else {
+      const file = slug + ".txt";
+      FS[parentPath + "/" + file] = node.url
+        ? { type: "file", content: `${node.name}\nenlace: ${node.url}`, url: node.url }
+        : { type: "file", content: node.soon ? `${node.name}\n(próximamente)` : node.name };
+      names.push(file);
+    }
   });
-});
+  return names;
+}
+FS["/apuntes"] = { type: "dir", children: buildNotesFS(NOTES, "/apuntes") };
 
 function resolvePath(base, target) {
   if (!target || target === "~") return "/";
