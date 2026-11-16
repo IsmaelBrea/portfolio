@@ -180,9 +180,6 @@ const NOTES = [
           },
           {
             name: "6.2 Cámaras",
-            children: [
-              { name: "argosatlas.com", soon: true },
-            ],
           },
         ],
       },
